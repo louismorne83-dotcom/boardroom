@@ -1,0 +1,52 @@
+{
+  "skill_name": "boardroom",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Should our Cape Town retail store trade on Sundays through the Nov-Dec holiday season? We're currently closed Sundays. Average Saturday revenue is around R18,000, normal staff wage is R55/hour, and we'd need 3 staff for an 8-hour Sunday shift. We don't currently have any marketing material announcing Sunday hours.",
+      "expected_output": "Activates the core four lenses plus HR (staffing/overtime is central) and Marketing (a new trading day only helps if customers know about it). Should surface, and price into the recommendation, that South African labour law requires double pay for staff who don't ordinarily work Sundays, not standard 1.5x overtime. Should recommend a scoped trial rather than a full-season commitment, and should flag that the trial is only meaningful if customers are actually told about it first. Confidence capped below 5/5 due to no store-specific data on whether extra hours grow sales or redistribute existing demand.",
+      "files": [],
+      "assertions": [
+        "Output includes a one-line 'Quick answer' at the top with a confidence score",
+        "Output includes an 'Active Lenses' section naming HR and Marketing as activated, with a reason for each",
+        "Output asks for or uses staff cost, current revenue baseline, and marketing material status before giving verdicts, not after",
+        "No lens is attributed to a specific named real person",
+        "Confidence score in the Final Call is accompanied by stated reasons, not given alone"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Should our SaaS company raise subscription prices by 10% next quarter to offset rising cloud costs? Current MRR is about R450,000 with 78% gross margin. Cloud costs are up roughly R35,000/month. Current monthly churn is around 2%. The plan on the table is applying the 10% increase to all customers, new and existing, at once.",
+      "expected_output": "Activates the core four lenses plus CFO (real margin and cash impact), not HR or Marketing. CFO lens should show the actual cost-versus-revenue math, not just a qualitative opinion. Cross-examination should catch the tension between a blanket rollout and the current above-benchmark churn rate, and should favor a phased rollout (new customers first, existing grandfathered) over the originally proposed blanket version.",
+      "files": [],
+      "assertions": [
+        "Output includes a CFO verdict with an actual cost/revenue calculation, not just a qualitative statement",
+        "Output does not activate HR or Marketing lenses for this prompt",
+        "Cross-Examination section identifies at least one real contradiction between two lens verdicts, not a restatement of both",
+        "Final recommendation differs from the originally proposed 'apply to everyone at once' plan, with a stated reason why"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Should we switch our card payment processor to a cheaper provider? Current provider charges 2.75% flat, monthly card turnover is about R120,000, we have 2 till points, and staff would need a short walkthrough on a new card machine.",
+      "expected_output": "Activates the core four lenses plus CFO only, correctly does not activate HR (a short device walkthrough isn't a staffing decision) or Marketing (customers don't need to know which processor is used). CFO should show a real fee comparison using an actual current published rate for at least one named provider, not an invented number. Cross-examination should be able to report genuine agreement across lenses rather than manufacturing a disagreement that isn't there.",
+      "files": [],
+      "assertions": [
+        "Active Lenses section does not include HR or Marketing, with a stated reason why each was excluded",
+        "CFO figures reference a real, sourced rate rather than an invented number",
+        "Cross-Examination section does not fabricate a contradiction when the panel's verdicts genuinely agree"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Should we grow the business?",
+      "expected_output": "Does not run the panel or produce a Final Call. Recognizes the decision is too vague to evaluate and asks what specifically is being considered (for example: new location, new product line, more staff, more marketing spend, extending hours, entering a new market), before doing any research or activating any lenses.",
+      "files": [],
+      "assertions": [
+        "Response does not include an Active Lenses section, Evidence Snapshot, Panel Verdicts, or Final Call",
+        "Response asks the user to specify what kind of growth or decision is meant",
+        "Response offers at least two concrete examples of what the vague prompt could mean"
+      ]
+    }
+  ]
+}
